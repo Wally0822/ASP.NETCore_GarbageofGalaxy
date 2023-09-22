@@ -7,6 +7,10 @@
 - ASP.NET Core : 7.0 버전
 <br>
 
+## 브런치 (Branch)
+- Unity : Main
+- ASP.NET Core : Server
+
 ## 팀원 : 
 - 서버 개발 : Wally0822
 - 클라이언트 개발 : KingOneChance, kory199, MuveloperDev
