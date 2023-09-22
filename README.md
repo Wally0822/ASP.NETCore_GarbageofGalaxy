@@ -2,14 +2,16 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=GarbageofGalaxy&fontSize=40" />
 
+## 브런치 (Branch)
+- Unity : Main
+- ASP.NET Core : Server
+https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/tree/Server
+<br>
+
 ## 버전 :
 - Unity : 2021.3.7f1
 - ASP.NET Core : 7.0 버전
 <br>
-
-## 브런치 (Branch)
-- Unity : Main
-- ASP.NET Core : Server
 
 ## 팀원 : 
 - 서버 개발 : Wally0822
