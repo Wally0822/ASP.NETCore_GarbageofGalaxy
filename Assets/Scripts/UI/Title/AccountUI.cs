@@ -20,7 +20,6 @@ public class AccountUI : MonoBehaviour
 
     private void StartInputFocus()
     {
-        infoText.gameObject.SetActive(false);
         inputFields[1].contentType = TMP_InputField.ContentType.Password;
 
         StartCoroutine(SetInitialFocus());
@@ -54,7 +53,6 @@ public class AccountUI : MonoBehaviour
         }
         else if (IsValidID(id) == false)
         {
-            infoText.gameObject.SetActive(true);
             infoText.text = "Invalid ID (1-12 alphanumeric characters only)";
         }
         else
@@ -87,7 +85,6 @@ public class AccountUI : MonoBehaviour
         }
         else if (IsValidPassword(password) == false)
         {
-            infoText.gameObject.SetActive(true);
             infoText.text = "Invalid Password (1-12 characters, at least one special)";
         }
         else
@@ -125,7 +122,6 @@ public class AccountUI : MonoBehaviour
     public async void OnClickLogin()
     {
         SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
-        infoText.gameObject.SetActive(true);
 
         if (TryProcessUserInput(out User user))
         {
@@ -182,7 +178,6 @@ public class AccountUI : MonoBehaviour
             return true;
         }
 
-        infoText.gameObject.SetActive(true);
         infoText.text = "Please correct the highlighted errors.";
         user = null;
         return false;
