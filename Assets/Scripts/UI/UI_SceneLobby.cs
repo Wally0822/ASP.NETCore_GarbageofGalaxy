@@ -1,7 +1,3 @@
-using System.Collections;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
-
 public class UI_SceneLobby : UIBase
 {
     IProcess.NextProcess _nextProcess = IProcess.NextProcess.Continue;
@@ -19,17 +15,22 @@ public class UI_SceneLobby : UIBase
     {
         SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
         await GameManager.Instance.MoveSceneWithAction(EnumTypes.ScenesType.SceneInGame, OnHide);
-        //GameManager.Instance.SceneState = SceneState.Game;
     }
 
-    public void OnClick_Explane()
+    UI_Attendance uI_Attendance;
+    public void OnClick_Attendance()
     {
         SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
+
+        if(uI_Attendance == null)
+        {
+            uI_Attendance = UIManager.Instance.CreateObject<UI_Attendance>("UI_Attendance", EnumTypes.LayoutType.Middle);
+        }
+
+        OnHide();
+        uI_Attendance.OnShow();
     }
-    public void OnClick_UnlockList()
-    {
-        SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
-    }
+
     UI_GPopupOption _gPopupOption = null;
     public void OnClick_Options()
     {
@@ -57,23 +58,9 @@ public class UI_SceneLobby : UIBase
         _rankUi.OnShow();
     }
 
-    //private void OnEnable()
-    //{
-        //GameManager.Instance.SceneState = SceneState.Lobby;
-    //}
-
-    public async void OnClick_ApplicationQuit()
+    public void OnClick_QuitBtn()
     {
-        SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
-        bool result = await APIManager.Instance.LogOutAPI();
-        if(result)
-        {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-    Application.Quit();
-#endif
-        }
+        UIManager.Instance.OnClickQuitBtn();
     }
 
     public async void OnClick_LogOut()

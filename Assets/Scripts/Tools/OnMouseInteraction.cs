@@ -15,6 +15,7 @@ public class OnMouseInteraction : MonoBehaviour
                 _eventTrigger = gameObject.AddComponent<EventTrigger>();
             }
         }
+
         EventTrigger.Entry entryDown = new EventTrigger.Entry();
         entryDown.eventID = EventTriggerType.PointerDown;
         entryDown.callback.AddListener((eventdata) => gameObject.transform.DOScale(gameObject.transform.localScale * 0.9f, 0.05f));

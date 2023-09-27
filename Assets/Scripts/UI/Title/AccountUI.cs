@@ -227,21 +227,8 @@ public class AccountUI : MonoBehaviour
         StopCoroutine(CheckTabKey());
     }
 
-    public void OnClickBackBtn()
+    public void OnClick_QuitBtn()
     {
-        // TODO : 로그인 안한 상태 이면 바로 나가, 로그인 했으면 서버에게 알리기 로직 추가
-        StartCoroutine(QuitGameAfterSFX());
-    }
-
-    private IEnumerator QuitGameAfterSFX()
-    {
-        SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
-        yield return new WaitForSeconds(SoundMgr.Instance.GetSFXLength(EnumTypes.SFXType.Button));
-
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-    Application.Quit();
-#endif
+        UIManager.Instance.OnClickQuitBtn();
     }
 }

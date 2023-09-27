@@ -32,8 +32,6 @@ public class UIManager : UIBase
     private int _sortingOrder = 0;
     private string _basePath = "UI/";
 
-    public UI_SceneTitle uI_SceneTitle;
-
     protected override void Awake()
     {
         if (_instance != null && Instance != this)
@@ -148,11 +146,18 @@ public class UIManager : UIBase
         _canvases.Add(type, newCanvas.gameObject);
     }
 
-    public void ShowUI(LayoutType layoutType, string resourceName)
+    public void ShowUI<T>(LayoutType layoutType, string resourceName) where T : UIBase
     {
         if (_canvases.ContainsKey(layoutType))
         {
-            _canvases[layoutType].SetActive(true);
+            GameObject canvas = _canvases[layoutType];
+
+            T targetObject = canvas.transform.Find(resourceName)?.GetComponent<T>();
+
+            if (targetObject != null)
+            {
+                targetObject.OnShow();
+            }
         }
     }
 
@@ -186,9 +191,6 @@ public class UIManager : UIBase
             case EnumTypes.ScenesType.SceneLobby:
                 StartCoroutine(InitializeUI<UI_SceneLobby>("UI_SceneLobby"));
                 break;
-            case EnumTypes.ScenesType.SceneInGame:
-                StartCoroutine(InitializeUI<UI_SceneGame>("UI_SceneGame"));
-                break;
         }
     }
 
@@ -205,7 +207,7 @@ public class UIManager : UIBase
         ui.OnShow();
     }
 
-    UI_BackGround ui_backGround;
+    private UI_BackGround ui_backGround;
     private IEnumerator InitialzeBackGround()
     {
         if (ui_backGround == null)
@@ -215,5 +217,22 @@ public class UIManager : UIBase
         }
 
         ui_backGround.OnShow();
+    }
+
+    public void OnClickQuitBtn()
+    {
+        StartCoroutine(QuitGameAfterSFX());
+    }
+
+    private IEnumerator QuitGameAfterSFX()
+    {
+        SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
+        yield return new WaitForSeconds(SoundMgr.Instance.GetSFXLength(EnumTypes.SFXType.Button));
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+    Application.Quit();
+#endif
     }
 }

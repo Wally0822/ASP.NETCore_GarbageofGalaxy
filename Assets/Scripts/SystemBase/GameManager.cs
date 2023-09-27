@@ -20,7 +20,6 @@ public class GameManager : MonoSingleton<GameManager>
         Cursor.SetCursor(_cursorImg, Vector2.zero, CursorMode.Auto);
     }
     #endregion
-
    
     public int GetStageNum()
     {
