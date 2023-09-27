@@ -35,8 +35,8 @@ https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/tree/Server
 - 클라이언트 개발 : KingOneChance, kory199, MuveloperDev
 <br>
 
-## MySQL Account DB Schema
-## Account Table
+## MySQL Schema
+## Account DB
 ```sql
 DROP DATABASE IF EXISTS accountDb;
 CREATE DATABASE IF NOT EXISTS accountDb;
