@@ -1,9 +1,9 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using static EnumTypes;
 
 public class UIManager : UIBase
@@ -32,15 +32,6 @@ public class UIManager : UIBase
     private int _sortingOrder = 0;
     private string _basePath = "UI/";
 
-  /*  [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    private static void InstUIManager()
-    {
-        JsonLoader.Instance.Load();
-
-        var uiManager = new GameObject().AddComponent<UIManager>();
-        uiManager.name = "UIManager";
-    }*/
-
     protected override void Awake()
     {
         if (_instance != null && Instance != this)
@@ -53,6 +44,7 @@ public class UIManager : UIBase
         _instance = this;
         isExistence = true;
 
+        OnSceneCallUI(ScenesType.SceneTitle);
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -163,5 +155,32 @@ public class UIManager : UIBase
     {
         return IProcess.NextProcess.Continue;
 
+    }
+
+    public void OnSceneCallUI(EnumTypes.ScenesType scene)
+    {
+        switch (scene)
+        {
+            case EnumTypes.ScenesType.SceneTitle:
+                StartCoroutine(InitializeUI<UI_SceneTitle>("UI_SceneTitle"));
+                break;
+            case EnumTypes.ScenesType.SceneLobby:
+                StartCoroutine(InitializeUI<UI_SceneLobby>("UI_SceneLobby"));
+                break;
+            case EnumTypes.ScenesType.SceneInGame:
+                StartCoroutine(InitializeUI<UI_SceneGame>("UI_SceneGame"));
+                break;
+        }
+    }
+
+    private IEnumerator InitializeUI<T>(string resourceName) where T : UIBase
+    {
+        var ui = FindObjectOfType<T>();
+        if (ui == null)
+        {
+            ui = UIManager.Instance.CreateObject<T>(resourceName, EnumTypes.LayoutType.First);
+            yield return new WaitUntil(() => ui != null);
+        }
+        ui.OnShow();
     }
 }

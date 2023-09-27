@@ -4,17 +4,17 @@ using UnityEngine.UI;
 using TMPro;
 public class TitleCall : MonoBehaviour
 {
-    AccountUI account;
+    UI_SceneTitle ui_title;
  
     IEnumerator Start()
     {
-        account = FindObjectOfType<AccountUI>();
-        if (account == null)
+        ui_title = FindObjectOfType<UI_SceneTitle>();
+        if (ui_title == null)
         {
-            account = UIManager.Instance.CreateObject<AccountUI>("UI_SceneTitle", EnumTypes.LayoutType.First);
-            yield return new WaitUntil(() => account != null);
+            ui_title = UIManager.Instance.CreateObject<UI_SceneTitle>("UI_SceneTitle", EnumTypes.LayoutType.First);
+            yield return new WaitUntil(() => ui_title != null);
         }
 
-        //account.OnShow();
+        ui_title.OnShow();
     }
 }

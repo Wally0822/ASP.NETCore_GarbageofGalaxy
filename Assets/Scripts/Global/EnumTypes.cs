@@ -141,6 +141,7 @@ public static partial class EnumTypes
         Max     
     }
 }
+
 public static partial class EnumTypes
 {
     public static int GetEnumNumber<TEnum>(TEnum tenum)

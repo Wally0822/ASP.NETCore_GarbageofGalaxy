@@ -11,6 +11,7 @@ public abstract class UIBase : MonoBehaviour, IProcess
     {
 
     }
+
     protected virtual void Start()
     {
     }

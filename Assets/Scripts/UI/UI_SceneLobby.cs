@@ -19,7 +19,7 @@ public class UI_SceneLobby : UIBase
     {
         SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
         await GameManager.Instance.MoveSceneWithAction(EnumTypes.ScenesType.SceneInGame, OnHide);
-        GameManager.Instance.SceneState = SceneState.Game;
+        //GameManager.Instance.SceneState = SceneState.Game;
     }
 
     public void OnClick_Explane()
@@ -57,10 +57,10 @@ public class UI_SceneLobby : UIBase
         _rankUi.OnShow();
     }
 
-    private void OnEnable()
-    {
-        GameManager.Instance.SceneState = SceneState.Lobby;
-    }
+    //private void OnEnable()
+    //{
+        //GameManager.Instance.SceneState = SceneState.Lobby;
+    //}
 
     public async void OnClick_ApplicationQuit()
     {

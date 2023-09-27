@@ -30,5 +30,4 @@ public class UI_SceneTitle : UIBase
     {
         await APIManager.Instance.GetMasterDataAPI();
     }
-
 }
