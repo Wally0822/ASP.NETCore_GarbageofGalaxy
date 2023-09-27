@@ -18,5 +18,10 @@ https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/tree/Server
 - 클라이언트 개발 : KingOneChance, kory199, MuveloperDev
 <br>
 
+## MySQL Schema
+- Account : https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/blob/Server/APIServer/DbSchema/AccountDB.md
+- GameDataBase : https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/blob/Server/APIServer/DbSchema/GameDB.md
+- MasterData : https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/blob/Server/APIServer/DbSchema/MasterData.md
+
 ## 빌드 다운로드 링크 : 
 - https://wally0822.github.io/BuildPI/
