@@ -4,6 +4,7 @@ using UnityEngine;
 public class UI_SceneTitle : UIBase
 {
     [SerializeField] TextMeshProUGUI versionText = null;
+    [SerializeField] GameObject accountPanel = null;
 
     IProcess.NextProcess _nextProcess = IProcess.NextProcess.Continue;
     public override IProcess.NextProcess ProcessInput()
@@ -14,6 +15,7 @@ public class UI_SceneTitle : UIBase
     #region Unity Lifecycle
     protected override void Awake()
     {
+        accountPanel.SetActive(false);
         SoundMgr.Instance.BGMPlay(EnumTypes.StageBGMType.Title);
 
         GetGameVersion();

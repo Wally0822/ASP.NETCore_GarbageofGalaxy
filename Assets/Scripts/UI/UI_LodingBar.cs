@@ -79,7 +79,6 @@ public class UI_LodingBar : UIBase
 
     private void OnDisable()
     {
-        StopCoroutine(LoadAsyncSceneCoroutine());
         slider.value = 0;
     }
 }

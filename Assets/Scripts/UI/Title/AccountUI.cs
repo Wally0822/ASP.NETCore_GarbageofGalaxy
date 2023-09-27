@@ -125,6 +125,7 @@ public class AccountUI : MonoBehaviour
     public async void OnClickLogin()
     {
         SoundMgr.Instance.SFXPlay(EnumTypes.SFXType.Button);
+        infoText.gameObject.SetActive(true);
 
         if (TryProcessUserInput(out User user))
         {
@@ -139,7 +140,7 @@ public class AccountUI : MonoBehaviour
                     infoText.text = $"Login Successful !";
                     await UniTask.Delay(TimeSpan.FromSeconds(0.5));
 
-                    //OnHide();
+                    UIManager.Instance.HideUI<UI_SceneTitle>(EnumTypes.LayoutType.First, "UI_SceneTitle(Clone)");
                     CreateLodingBar();
                 }
                 else

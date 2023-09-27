@@ -32,6 +32,8 @@ public class UIManager : UIBase
     private int _sortingOrder = 0;
     private string _basePath = "UI/";
 
+    public UI_SceneTitle uI_SceneTitle;
+
     protected override void Awake()
     {
         if (_instance != null && Instance != this)
@@ -44,11 +46,13 @@ public class UIManager : UIBase
         _instance = this;
         isExistence = true;
 
-        OnSceneCallUI(ScenesType.SceneTitle);
         DontDestroyOnLoad(this.gameObject);
     }
 
-    protected override void Start() => SetUp();
+    protected override void Start()
+    {
+        SetUp();
+    }
 
     private void SetUp()
     {
@@ -62,6 +66,9 @@ public class UIManager : UIBase
         }
 
         GetLanguageData();
+
+        StartCoroutine(InitialzeBackGround());
+        OnSceneCallUI(ScenesType.SceneTitle);
     }
 
     private void GetLanguageData()
@@ -88,15 +95,20 @@ public class UIManager : UIBase
         {
             CreateCanvas(type);
         }
+
         var targetCanvas = _canvases[type];
         string path = string.Concat(_basePath, argPath);
         GameObject newUI = Resources.Load<GameObject>(path);
+
         GameObject newUIInstance = Instantiate(newUI);
-        newUIInstance.transform.SetParent(targetCanvas.transform);
+        newUIInstance.transform.SetParent(targetCanvas.transform, false);
+
         var targetcanvas = newUIInstance.GetComponent<Canvas>();
-        targetcanvas.overrideSorting = true;
-        targetcanvas.sortingOrder = _canvases[type].GetComponent<Canvas>().sortingOrder + 1;
-        var targetComponent = newUIInstance.GetComponent<T>();
+        if (targetcanvas != null)
+        {
+            targetcanvas.overrideSorting = true;
+            targetcanvas.sortingOrder = _canvases[type].GetComponent<Canvas>().sortingOrder + 1;
+        }
 
         createdUIs[argPath] = newUIInstance;
         return newUIInstance.GetComponent<T>();
@@ -109,6 +121,7 @@ public class UIManager : UIBase
         {
             CreateCanvas(type);
         }
+
         var targetCanvas = _canvases[type];
         string path = string.Concat(_basePath, argPath);
         GameObject newUI = Resources.Load<GameObject>(path);
@@ -135,7 +148,7 @@ public class UIManager : UIBase
         _canvases.Add(type, newCanvas.gameObject);
     }
 
-    public void ShowUI(LayoutType layoutType)
+    public void ShowUI(LayoutType layoutType, string resourceName)
     {
         if (_canvases.ContainsKey(layoutType))
         {
@@ -143,11 +156,17 @@ public class UIManager : UIBase
         }
     }
 
-    private void HideUI(LayoutType layoutType)
+    public void HideUI<T>(LayoutType layoutType, string resourceName) where T : UIBase
     {
         if (_canvases.ContainsKey(layoutType))
         {
-            _canvases[layoutType].SetActive(false);
+            GameObject canvas = _canvases[layoutType];
+
+            T targetObject = canvas.transform.Find(resourceName)?.GetComponent<T>();
+            if (targetObject != null)
+            {
+                targetObject.OnHide();
+            }
         }
     }
 
@@ -176,11 +195,25 @@ public class UIManager : UIBase
     private IEnumerator InitializeUI<T>(string resourceName) where T : UIBase
     {
         var ui = FindObjectOfType<T>();
-        if (ui == null)
+        
+        if (ui == null )
         {
-            ui = UIManager.Instance.CreateObject<T>(resourceName, EnumTypes.LayoutType.First);
+            ui = CreateObject<T>(resourceName, EnumTypes.LayoutType.First);
             yield return new WaitUntil(() => ui != null);
         }
+
         ui.OnShow();
+    }
+
+    UI_BackGround ui_backGround;
+    private IEnumerator InitialzeBackGround()
+    {
+        if (ui_backGround == null)
+        {
+            ui_backGround = CreateObject<UI_BackGround>("UI_BackGround", LayoutType.Global);
+            yield return new WaitUntil(() => ui_backGround != null);
+        }
+
+        ui_backGround.OnShow();
     }
 }
