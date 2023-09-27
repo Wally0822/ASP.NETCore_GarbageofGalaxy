@@ -2,10 +2,24 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=auto&height=200&section=header&text=GarbageofGalaxy&fontSize=40" />
 
+## 게임 소개
+우주의 쓰레기 문제를 해결하기 위해 우주 청소 부대의 일원이 되어 쓰레기를 소멸시키는 2D 탄막 슈팅 게임입니다. <br>
+단순한 슈팅 게임이 아니라, 발사한 총알이 목표를 놓치면 플레이어 자신이 위협받게 되는 특별한 시스템을 가지고 있습니다. <br>
+전략과 순발력이 중요하며, 향후 멀티플레이 모드를 통해 다른 플레이어와의 대결도 즐길 수 있습니다.<br>
+"가비지 갤럭시"에서 우주의 청소부로서 우주를 지켜보세요!
+<br>
+
 ## 브런치 (Branch)
 - Unity : Main
 - ASP.NET Core : Server
 https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/tree/Server
+<br>
+
+## 씬 대표 화면
+- Title Scene
+  
+- Lobby Scene
+- InGame Scene
 <br>
 
 ## 버전 :
@@ -38,6 +52,7 @@ CREATE TABLE IF NOT EXISTS accountDb.`account`
 ```
 - GameDataBase : https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/blob/Server/APIServer/DbSchema/GameDB.md
 - MasterData : https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/blob/Server/APIServer/DbSchema/MasterData.md
+<br>
 
 ## 빌드 다운로드 링크 : 
 - https://wally0822.github.io/BuildPI/
