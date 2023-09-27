@@ -158,10 +158,10 @@ TextureImporter:
       name: SF Generic_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 5
+        y: 5
+        width: 22
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 10, y: 10, z: 10, w: 10}
@@ -178,7 +178,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 24df193d8cf4d40198ef3d568f3f7a7a
     internalID: 0
     vertices: []
     indices: 

@@ -13,7 +13,6 @@ public class UI_SceneGame : UIBase
     [SerializeField] private TextMeshProUGUI _level = null;
     [SerializeField] private TextMeshProUGUI _attackPower = null;
     [SerializeField] private TextMeshProUGUI _score = null;
-    [SerializeField] private TextMeshProUGUI _levlUptext = null;
 
     [SerializeField] private RawImage[] _skillImage = null;
     [SerializeField] private RawImage[] _skillCover = null;
@@ -93,7 +92,6 @@ public class UI_SceneGame : UIBase
         }
     }
 
-
     private IEnumerator ActivatePauseButtonAfterDelay()
     {
         _pausebtn.interactable = false;
@@ -128,7 +126,7 @@ public class UI_SceneGame : UIBase
     }
     public void SetStageNum(int num)
     {
-        _stage.text = "Stage\n" + num.ToString();
+        _stage.text = "Stage" + num.ToString();
     }
     public void SetLevel(int level)
     {
