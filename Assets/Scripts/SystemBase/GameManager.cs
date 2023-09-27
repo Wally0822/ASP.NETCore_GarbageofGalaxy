@@ -1,16 +1,17 @@
+using System;
 using APIModels;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System;
 
-[System.Serializable]
+[Serializable]
 public enum SceneState
 {
     Title,
     Lobby,
     Game,
 }
+
 public class GameManager : MonoSingleton<GameManager>
 {
     public SceneState SceneState { get; set; }

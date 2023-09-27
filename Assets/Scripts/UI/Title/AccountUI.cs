@@ -5,30 +5,15 @@ using Cysharp.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
-public class AccountUI : UIBase
+public class AccountUI : MonoBehaviour
 {
     [SerializeField] TMP_InputField[] inputFields = null;
     [SerializeField] TextMeshProUGUI infoText = null;
-    [SerializeField] TextMeshProUGUI versionText = null;
 
     private int _currentIndex = 0;
 
-    IProcess.NextProcess _nextProcess = IProcess.NextProcess.Continue;
-    public override IProcess.NextProcess ProcessInput()
-    {
-        return _nextProcess;
-    }
-
     #region Unity Lifecycle
-    protected override void Awake()
-    {
-        GetGameVersion();
-        GetMasterData();
-
-        SoundMgr.Instance.BGMPlay(EnumTypes.StageBGMType.Title);
-    }
-
-    protected override void Start()
+    private void Start()
     {
         StartInputFocus();
     }
@@ -49,16 +34,6 @@ public class AccountUI : UIBase
         }
     }
     #endregion
-
-    private async void GetGameVersion()
-    {
-        versionText.text = "Ver :  " + await APIManager.Instance.GetGameVersionAPI();
-    }
-
-    private async void GetMasterData()
-    {
-        await APIManager.Instance.GetMasterDataAPI();
-    }
 
     private IEnumerator SetInitialFocus()
     {
@@ -164,7 +139,7 @@ public class AccountUI : UIBase
                     infoText.text = $"Login Successful !";
                     await UniTask.Delay(TimeSpan.FromSeconds(0.5));
 
-                    OnHide();
+                    //OnHide();
                     CreateLodingBar();
                 }
                 else

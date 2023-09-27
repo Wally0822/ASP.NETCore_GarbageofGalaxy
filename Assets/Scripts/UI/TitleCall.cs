@@ -15,6 +15,6 @@ public class TitleCall : MonoBehaviour
             yield return new WaitUntil(() => account != null);
         }
 
-        account.OnShow();
+        //account.OnShow();
     }
 }
