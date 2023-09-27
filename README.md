@@ -18,9 +18,11 @@ https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/tree/Server
 
 ## 씬 대표 화면
 - Title Scene
-  
+  <img width="963" alt="스크린샷 2023-09-27 오후 6 32 39" src="https://github.com/Wally0822/Csharp_ConsoleChatting/assets/111326483/f2912711-bfd1-43b2-9816-6198e2782688">
 - Lobby Scene
+  <img width="961" alt="스크린샷 2023-09-27 오후 6 33 05" src="https://github.com/Wally0822/Csharp_ConsoleChatting/assets/111326483/adef9db3-884c-4ac3-89bb-1de7c696a006">
 - InGame Scene
+  <img width="959" alt="스크린샷 2023-09-27 오후 6 33 24" src="https://github.com/Wally0822/Csharp_ConsoleChatting/assets/111326483/7def7ebb-43f7-4045-9f90-73dd3856d3a6">
 <br>
 
 ## 버전 :
