@@ -36,7 +36,7 @@ https://github.com/Wally0822/ASP.NETCore_GarbageofGalaxy/tree/Server
 <br>
 
 ## MySQL Schema
-## Account DB
+### Account DB
 ```sql
 DROP DATABASE IF EXISTS accountDb;
 CREATE DATABASE IF NOT EXISTS accountDb;
