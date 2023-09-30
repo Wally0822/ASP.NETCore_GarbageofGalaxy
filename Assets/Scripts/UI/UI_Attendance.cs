@@ -88,6 +88,7 @@ public class UI_Attendance : UIBase
 
         return 0;
     }
+
     public void YearPrev()
     {
         _dateTime = _dateTime.AddYears(-1);
@@ -114,9 +115,7 @@ public class UI_Attendance : UIBase
 
     public void OnClick_DayBtn()
     {
-        //_target.text = _yearNumText.text + "-" + _monthNumText.text + "-" + int.Parse(day).ToString("D2");
-
-        //_calendarPanel.SetActive(false);
+        
     }
 
     public void OnClick_QuitBtn()
